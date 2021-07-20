@@ -3,7 +3,7 @@ export type Prim = Nil | string | number | bigint | boolean | symbol
 
 export type Stringable =
   // deno-lint-ignore ban-types
-  | String
+  | String // we allow all types that extends from string
   | Exclude<Prim, symbol | Nil> | URL | URLSearchParams
 
 export type StringableRecord = Record<string, Nil | Stringable>
