@@ -1,12 +1,15 @@
 export type Nil = null | undefined
 export type Prim = Nil | string | number | bigint | boolean | symbol
 
-export interface Stringable {toString(): string}
+export type Stringable =
+  // deno-lint-ignore ban-types
+  | String
+  | Exclude<Prim, symbol | Nil> | URL | URLSearchParams
 
 export type StringableRecord = Record<string, Nil | Stringable>
 
 export interface KnownProps {
-  style?: Nil | Stringable | StringableRecord
+  style?: Nil | string | StringableRecord
   dataset?: StringableRecord
   attributes?: StringableRecord
 }
